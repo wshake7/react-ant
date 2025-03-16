@@ -5,6 +5,7 @@ import reactHook from 'alova/react'
 export const API = createAlova({
   statesHook: reactHook,
   requestAdapter: adapterFetch(),
+  cacheFor: null,
   // beforeRequest() {
   //   nProgress.start()
   // },

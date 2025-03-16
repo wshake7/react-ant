@@ -1,13 +1,15 @@
 import { createRouter, RouterProvider } from '@tanstack/react-router'
+import { ConfigProvider } from 'antd'
+import zhCN from 'antd/es/locale/zh_CN'
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 import reportWebVitals from './reportWebVitals'
-
 // Import the generated route tree
-import { routeTree } from './routeTree.gen'
-
-import '~/locales/i18n'
 import '@/styles/index.css'
+import '@ant-design/v5-patch-for-react-19'
+import '~/locales/i18n'
+import { theme } from './config/theme'
+import { routeTree } from './routeTree.gen'
 
 // Create a new router instance
 const router = createRouter({
@@ -37,7 +39,12 @@ if (!rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement)
   root.render(
     <StrictMode>
-      <RouterProvider router={router} />
+        <ConfigProvider
+          locale={zhCN}
+          theme={theme}
+        >
+          <RouterProvider router={router} />
+        </ConfigProvider>
     </StrictMode>,
   )
 }
